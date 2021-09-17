@@ -14,7 +14,7 @@ namespace triangle_calculations
         {
             _conn = new SqliteConnection("Data Source=calculation_database.db");
             _conn.Open();
-            Debug.WriteLine("Database Connection opened");
+            Debug.WriteLine("Database connection opened");
         }
 
         ~DatabaseConnection()
