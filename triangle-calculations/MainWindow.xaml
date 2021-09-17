@@ -1,0 +1,107 @@
+﻿<Window x:Class="triangle_calculations.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:triangle_calculations"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Title -->
+        <Label  Grid.Row="0" Grid.ColumnSpan="10" Content="Triangle Calculators" HorizontalAlignment="Center" FontSize="18"/>
+
+        <!-- PH = "Pythagorus Hypotenuse" -->
+        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="10" Content="Pythagoras Theorum: Calculate Hypotenuse"/>
+        <Label Grid.Row="2" Grid.Column="1" Content="Other Side A:"/>
+        <TextBox Grid.Row="2" Grid.Column="2" x:Name="PHSideA" Padding="2" VerticalAlignment="Center"/>
+        <Label Grid.Row="2" Grid.Column="3" Content="Other Side B:"/>
+        <TextBox Grid.Row="2" Grid.Column="4" x:Name="PHSideB" Padding="2" VerticalAlignment="Center"/>
+        <Button Grid.Row="2" Grid.Column="6" Content="Calculate" Padding="5,2" Click="PHButton" />
+        <StackPanel Grid.Row="2" Grid.Column="7" x:Name="PHResultPanel" Orientation="Horizontal" Visibility="Hidden">
+            <Label Content="Hypotenuse =" Padding="5,5,0,5"/>
+            <TextBox x:Name="PHResult" Padding="2" VerticalAlignment="Center" BorderBrush="{x:Null}" IsReadOnly="True"/>
+        </StackPanel>
+
+
+        <!-- PO = "Pythagorus Other" -->
+        <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="10" Content="Pythagoras Theorum: Calculate Other Side"/>
+        <Label Grid.Row="5" Grid.Column="1" Content="Hypotenuse:"/>
+        <TextBox Grid.Row="5" Grid.Column="2" x:Name="POHypot" Width="50" Padding="2" VerticalAlignment="Center"/>
+        <Label Grid.Row="5" Grid.Column="3" Content="Other Side A:"/>
+        <TextBox Grid.Row="5" Grid.Column="4" x:Name="POSideA" Width="50" Padding="2" VerticalAlignment="Center"/>
+        <Button Grid.Row="5" Grid.Column="6" Content="Calculate" Padding="5,2" Click="POButton" />
+        <StackPanel Grid.Row="5" Grid.Column="7" x:Name="POResultPanel" Orientation="Horizontal" Visibility="Hidden">
+            <Label Content="Side B =" Padding="5,5,0,5"/>
+            <TextBox x:Name="POResult" Padding="2" VerticalAlignment="Center" BorderBrush="{x:Null}" IsReadOnly="True"/>
+        </StackPanel>
+
+        <!-- AT = "Area of Triangle" -->
+        <Label  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="10" Content="Calculate Area of Triangle"/>
+        <Label Grid.Row="8" Grid.Column="1" Content="Base Length: "/>
+        <TextBox Grid.Row="8" Grid.Column="2" x:Name="ATBase" Width="50" Padding="2" VerticalAlignment="Center"/>
+        <Label Grid.Row="8" Grid.Column="3" Content="Triangle Height:"/>
+        <TextBox Grid.Row="8" Grid.Column="4" x:Name="ATHeight" Width="50" Padding="2" VerticalAlignment="Center"/>
+        <Button Grid.Row="8" Grid.Column="6" Content="Calculate" Padding="5,2" Click="ATButton" />
+        <StackPanel Grid.Row="8" Grid.Column="7" x:Name="ATResultPanel" Orientation="Horizontal" Visibility="Hidden">
+            <Label Content="Area =" Padding="5,5,0,5"/>
+            <TextBox x:Name="ATResult" Padding="2" VerticalAlignment="Center" BorderBrush="{x:Null}" IsReadOnly="True"/>
+        </StackPanel>
+
+        <!-- PT = "Perimeter of Triangle" -->
+        <Label  Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="10" Content="Calculate Perimeter of Triangle"/>
+        <Label Grid.Row="11" Grid.Column="1" Content="Side A Length: "/>
+        <TextBox Grid.Row="11" Grid.Column="2" x:Name="PTSideA" Width="50" Padding="2" VerticalAlignment="Center"/>
+        <Label Grid.Row="11" Grid.Column="3" Content="Side B Length: "/>
+        <TextBox Grid.Row="11" Grid.Column="4" x:Name="PTSideB" Width="50" Padding="2" VerticalAlignment="Center"/>
+        <Label Grid.Row="12" Grid.Column="1" Content="Side C Length: "/>
+        <TextBox Grid.Row="12" Grid.Column="2" x:Name="PTSideC" Width="50" Padding="2" VerticalAlignment="Center"/>
+        <Button Grid.Row="11" Grid.Column="6" Content="Calculate" Padding="5,2" Click="PTButton" />
+        <StackPanel Grid.Row="11" Grid.Column="7" x:Name="PTResultPanel" Orientation="Horizontal" Visibility="Hidden">
+            <Label  Content="Perimeter =" Padding="5,5,0,5"/>
+            <TextBox x:Name="PTResult" Padding="2" VerticalAlignment="Center" BorderBrush="{x:Null}" IsReadOnly="True"/>
+        </StackPanel>
+
+        <!-- Calculation History elements -->
+        <Label Grid.Row="1" Grid.Column="8" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Calculation History" />
+        <Button Grid.Row="1" Grid.Column="8" HorizontalAlignment="Right" Content="Clear History" Margin="0,0,5,5" Padding="5,2" Click="ClearButton" />
+        <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="2" Grid.RowSpan="12" Grid.Column="8">
+            <ScrollViewer>
+                <TextBlock x:Name="CalculationHistory" Padding="5,2,5,2" TextWrapping="Wrap"></TextBlock>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Bad input validation pop-up -->
+        <Label  Grid.Row="13" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="10" x:Name="BadInputNotice" Content="Bad Input!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Background="Red" Foreground="White" Visibility="Hidden"/>
+    </Grid>
+</Window>
