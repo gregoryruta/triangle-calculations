@@ -39,7 +39,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Title -->
-        <Label  Grid.Row="0" Grid.ColumnSpan="10" Content="Triangle Calculators" HorizontalAlignment="Center" FontSize="18"/>
+        <Label  Grid.Row="0" Grid.ColumnSpan="10" Content="Triangle Calculations" HorizontalAlignment="Center" FontSize="18"/>
 
         <!-- PH = "Pythagorus Hypotenuse" -->
         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="10" Content="Pythagoras Theorum: Calculate Hypotenuse"/>
