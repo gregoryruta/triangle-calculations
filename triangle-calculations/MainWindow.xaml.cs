@@ -27,11 +27,11 @@ namespace triangle_calculations
             // Create database connection
             DatabaseConnection dbConn = new DatabaseConnection();
 
-            // Create Tables (if required)
+            // Create table (if required)
             dbConn.CreateTable();
 
             // Load GUI calculation history
-            CalculationHistory.Text = dbConn.SelectSummaries();
+            CalculationHistory.Text = dbConn.SelectCalculations();
         }
 
         // Button Click: Pythagoras Hypotenuse
@@ -44,16 +44,16 @@ namespace triangle_calculations
                 double sideB = double.Parse(PHSideB.Text);
                 Calculation calculation = new CalcPythagHypot(sideA, sideB);
 
-                // Update database with result
+                // Update database with calculation info
                 DatabaseConnection dbConn = new DatabaseConnection();
-                dbConn.InsertSummary(calculation.Timestamp, calculation.Summary);
+                dbConn.InsertCalculation(calculation.Timestamp, calculation.Summary);
 
                 // Update GUI result
                 PHResult.Text = calculation.Result;
                 PHResultPanel.Visibility = Visibility.Visible;
 
                 // Update GUI calculation history
-                CalculationHistory.Text = dbConn.SelectSummaries();
+                CalculationHistory.Text = dbConn.SelectCalculations();
 
                 // Hide GUI validation warning
                 BadInputNotice.Visibility = Visibility.Hidden;
@@ -75,16 +75,16 @@ namespace triangle_calculations
                 double sideA = double.Parse(POSideA.Text);
                 Calculation calculation = new CalcPythagOther(hypotenuse, sideA);
 
-                // Update database with result
+                // Update database with calculation info
                 DatabaseConnection dbConn = new DatabaseConnection();
-                dbConn.InsertSummary(calculation.Timestamp, calculation.Summary);
+                dbConn.InsertCalculation(calculation.Timestamp, calculation.Summary);
 
                 // Update GUI result
                 POResult.Text = calculation.Result;
                 POResultPanel.Visibility = Visibility.Visible;
 
                 // Update GUI calculation history
-                CalculationHistory.Text = dbConn.SelectSummaries();
+                CalculationHistory.Text = dbConn.SelectCalculations();
 
                 // Hide GUI validation warning
                 BadInputNotice.Visibility = Visibility.Hidden;
@@ -106,16 +106,16 @@ namespace triangle_calculations
                 double heightT = double.Parse(ATHeight.Text);
                 Calculation calculation = new CalcArea(baseT, heightT);
 
-                // Update database with result
+                // Update database with calculation info
                 DatabaseConnection dbConn = new DatabaseConnection();
-                dbConn.InsertSummary(calculation.Timestamp, calculation.Summary);
+                dbConn.InsertCalculation(calculation.Timestamp, calculation.Summary);
 
                 // Update GUI result
                 ATResult.Text = calculation.Result;
                 ATResultPanel.Visibility = Visibility.Visible;
 
                 // Update GUI calculation history
-                CalculationHistory.Text = dbConn.SelectSummaries();
+                CalculationHistory.Text = dbConn.SelectCalculations();
 
                 // Hide GUI validation warning
                 BadInputNotice.Visibility = Visibility.Hidden;
@@ -138,16 +138,16 @@ namespace triangle_calculations
                 double sideC = double.Parse(PTSideC.Text);
                 Calculation calculation = new CalcPerimeter(sideA, sideB, sideC);
 
-                // Update database with result
+                // Update database with calculation info
                 DatabaseConnection dbConn = new DatabaseConnection();
-                dbConn.InsertSummary(calculation.Timestamp, calculation.Summary);
+                dbConn.InsertCalculation(calculation.Timestamp, calculation.Summary);
 
                 // Update GUI result
                 PTResult.Text = calculation.Result;
                 PTResultPanel.Visibility = Visibility.Visible;
 
                 // Update GUI calculation history
-                CalculationHistory.Text = dbConn.SelectSummaries();
+                CalculationHistory.Text = dbConn.SelectCalculations();
 
                 // Hide GUI validation warning
                 BadInputNotice.Visibility = Visibility.Hidden;
@@ -165,7 +165,7 @@ namespace triangle_calculations
             DatabaseConnection dbConn = new DatabaseConnection();
             dbConn.DropTable();
             dbConn.CreateTable();
-            CalculationHistory.Text = dbConn.SelectSummaries();
+            CalculationHistory.Text = dbConn.SelectCalculations();
         }
     }
 }

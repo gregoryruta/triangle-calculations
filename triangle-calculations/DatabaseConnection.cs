@@ -24,7 +24,7 @@ namespace triangle_calculations
         }
 
         // Command for SELECT queries
-        public string SelectCommand(string statement, int columnCount)
+        private string SelectCommand(string statement, int columnCount)
         {
             SqliteCommand cmd = _conn.CreateCommand();
             cmd.CommandText = statement;
@@ -48,40 +48,37 @@ namespace triangle_calculations
         }
 
         // Command for non-returning statements
-        public void OtherCommand(string statement)
+        private void OtherCommand(string statement)
         {
             SqliteCommand cmd = _conn.CreateCommand();
             cmd.CommandText = statement;
             cmd.ExecuteNonQuery();
         }
 
-        // Create tables
+        // Create table
         public void CreateTable()
         {
             string statement = "SELECT name FROM sqlite_master WHERE type='table' AND name='calc_history'";
 
             // If calc_history table doesn't exist, create it
             if (SelectCommand(statement, 1) == "")
-            {
-                statement = "CREATE TABLE calc_history (timestamp VARCHAR(30), summary VARCHAR(200))";
-                OtherCommand(statement);
-            }
+                OtherCommand("CREATE TABLE calc_history (timestamp VARCHAR(30), summary VARCHAR(200))");
         }
 
-        // Drop tables
+        // Drop table
         public void DropTable()
         {
             OtherCommand("DROP TABLE IF EXISTS calc_history");
         }
 
-        // Insert summary
-        public void InsertSummary(string timestamp, string summary)
+        // Insert calculation
+        public void InsertCalculation(string timestamp, string summary)
         {
             OtherCommand($"INSERT INTO calc_history (timestamp, summary) VALUES ('{timestamp}', '{summary}')");
         }
 
-        // Select and return summaries
-        public string SelectSummaries()
+        // Select and return calculations
+        public string SelectCalculations()
         {
             return SelectCommand("SELECT timestamp, summary FROM calc_history ORDER BY rowid DESC", 2);
         }
