@@ -10,10 +10,10 @@ namespace triangle_calculations
         private double _sideA;
         private double _sideB;
 
-        public CalcPythagOther(double hypotenuse, double otherSideA)
+        public CalcPythagOther(double hypotenuse, double sideA)
         {
             _hypotenuse = hypotenuse;
-            _sideA = otherSideA;
+            _sideA = sideA;
             _sideB = Math.Sqrt(Math.Pow(_hypotenuse, 2) - Math.Pow(_sideA, 2));
             _sideB = Math.Round(_sideB, 2);
         }
